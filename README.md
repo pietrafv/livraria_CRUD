@@ -1,18 +1,18 @@
-Breve explicação do projeto
+# Breve explicação do projeto
 
 Este projeto é um CRUD de uma livraria, desenvolvido em Flask com banco de dados SQLite usando o SQLAlchemy.
 
-Entidades:
+## Entidades:
 - Autor: representa um autor de livros, com os seguintes atributos: id, nome, nacionalidade e idade.
 
 - Livro: representa um livro, com os seguintes atributos: id, titulo, ano, genero e autor_id (que é uma chave estrangeira que faz referencia ao autor).
 
-Relacionamento:
+## Relacionamento:
 - Um autor pode ter muitos livros (Autor.livros).
 - Cada livro pertence a um único autor (Livro.autor).
 - O relacionamento é configurado com cascade="all, delete", então, ao deletar um autor, todos os livros associados também são removidos automaticamente.
 
-Como executar o projeto:
+## Como executar o projeto:
 - Crie um ambiente virtual e instale as dependências:
 1. python -m venv venv
 2. source venv/bin/activate (no Linux) ou venv\Scripts\activate (no Windows)
@@ -27,3 +27,4 @@ python run.py
 
 - Acesse a aplicação no navegador em:
 http://127.0.0.1:5000
+
