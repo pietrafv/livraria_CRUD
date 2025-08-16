@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<h2>Criar Autor</h2>
+<form method="POST">
+    Nome: <input type="text" name="nome"><br>
+    Nacionalidade: <input type="text" name="nacionalidade"><br>
+    Idade: <input type="number" name="idade"><br>
+    <button type="submit">Criar</button>
+</form>
+{% endblock %}
