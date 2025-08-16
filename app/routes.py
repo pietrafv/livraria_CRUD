@@ -16,7 +16,7 @@ def criar_autor_view():
         nome = request.form['nome']
         nacionalidade = request.form['nacionalidade']
         idade = request.form['idade']
-        idade = int(idade) if idade else None  # converte para int ou None
+        idade = int(idade) if idade else None
         criar_autor(Autor(nome=nome, nacionalidade=nacionalidade, idade=idade))
         return redirect(url_for('routes.listar_autores_view'))
     return render_template('autores/criar.html')
@@ -29,7 +29,7 @@ def editar_autor_view(id):
         autor.nacionalidade = request.form['nacionalidade']
         idade = request.form['idade']
         autor.idade = int(idade) if idade else None
-        atualizar_autor(autor)  # envia o objeto para atualizar
+        atualizar_autor(autor)
         return redirect(url_for('routes.listar_autores_view'))
     return render_template('autores/editar.html', autor=autor)
 
