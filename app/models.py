@@ -13,6 +13,3 @@ class Livro(db.Model):
     ano = db.Column(db.Integer)
     genero = db.Column(db.String(50))
     autor_id = db.Column(db.Integer, db.ForeignKey('autor.id'))
-
-    autor = db.relationship('Autor', backref='livros')
-
