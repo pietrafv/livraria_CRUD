@@ -16,6 +16,7 @@ def criar_autor_view():
         nome = request.form['nome']
         nacionalidade = request.form['nacionalidade']
         idade = request.form['idade']
+        idade = int(idade) if idade else None  # converte para int ou None
         criar_autor(Autor(nome=nome, nacionalidade=nacionalidade, idade=idade))
         return redirect(url_for('routes.listar_autores_view'))
     return render_template('autores/criar.html')
@@ -26,8 +27,9 @@ def editar_autor_view(id):
     if request.method == 'POST':
         autor.nome = request.form['nome']
         autor.nacionalidade = request.form['nacionalidade']
-        autor.idade = request.form['idade']
-        atualizar_autor()
+        idade = request.form['idade']
+        autor.idade = int(idade) if idade else None
+        atualizar_autor(autor)  # envia o objeto para atualizar
         return redirect(url_for('routes.listar_autores_view'))
     return render_template('autores/editar.html', autor=autor)
 
@@ -49,8 +51,9 @@ def criar_livro_view():
     if request.method == 'POST':
         titulo = request.form['titulo']
         ano = request.form['ano']
+        ano = int(ano) if ano else None
         genero = request.form['genero']
-        autor_id = request.form['autor_id']
+        autor_id = int(request.form['autor_id'])
         criar_livro(Livro(titulo=titulo, ano=ano, genero=genero, autor_id=autor_id))
         return redirect(url_for('routes.listar_livros_view'))
     return render_template('livros/criar.html', autores=autores)
@@ -61,10 +64,11 @@ def editar_livro_view(id):
     autores = listar_autores()
     if request.method == 'POST':
         livro.titulo = request.form['titulo']
-        livro.ano = request.form['ano']
+        ano = request.form['ano']
+        livro.ano = int(ano) if ano else None
         livro.genero = request.form['genero']
-        livro.autor_id = request.form['autor_id']
-        atualizar_livro()
+        livro.autor_id = int(request.form['autor_id'])
+        atualizar_livro(livro)
         return redirect(url_for('routes.listar_livros_view'))
     return render_template('livros/editar.html', livro=livro, autores=autores)
 

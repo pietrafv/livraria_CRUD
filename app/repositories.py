@@ -1,7 +1,7 @@
 from .models import Autor, Livro
 from . import db
 
-# CRUD - p/ os autores
+# CRUD - autores
 def criar_autor(autor):
     db.session.add(autor)
     db.session.commit()
@@ -12,14 +12,14 @@ def listar_autores():
 def buscar_autor(id):
     return Autor.query.get(id)
 
-def atualizar_autor():
+def atualizar_autor(autor):
     db.session.commit()
 
 def deletar_autor(autor):
     db.session.delete(autor)
     db.session.commit()
 
-# CRUD - p/ os livros
+# CRUD - livros
 def criar_livro(livro):
     db.session.add(livro)
     db.session.commit()
@@ -30,7 +30,7 @@ def listar_livros():
 def buscar_livro(id):
     return Livro.query.get(id)
 
-def atualizar_livro():
+def atualizar_livro(livro):
     db.session.commit()
 
 def deletar_livro(livro):
